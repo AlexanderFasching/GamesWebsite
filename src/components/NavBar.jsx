@@ -33,7 +33,7 @@ export default function NavBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography color="secondary" variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography>
       <Divider />
@@ -43,7 +43,14 @@ export default function NavBar(props) {
             <ListItemButton
               component={Link}
               to={item.path}
-              sx={{ textAlign: "center" }}
+              sx={{
+                textAlign: "center",
+                color: `${theme.palette.primary.main}`,
+                "&:hover": {
+                  backgroundColor: "#333333", // custom hover color
+                  color: "#ffffff", // optional: brighten text on hover
+                },
+              }}
             >
               <ListItemText primary={item.label} />
             </ListItemButton>
@@ -61,9 +68,9 @@ export default function NavBar(props) {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: `${theme.palette.primary.main}AA`,
-          //backgroundColor: "rgba(107, 70, 92, 0.7)",
-          backdropFilter: "blur(24px)",
+          backgroundColor: "rgba(38, 38, 38, 0.7)", // dark grey with transparency
+          backdropFilter: "blur(12px)", // blur strength
+          WebkitBackdropFilter: "blur(12px)", // for Safari support
         }}
       >
         <Toolbar>
@@ -73,20 +80,25 @@ export default function NavBar(props) {
             color="inherit"
             aria-label="menu"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, color: `${theme.palette.primary.main}` }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            color="secondary"
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
             Xandi's Games
           </Typography>
-          <Button color="inherit" component={Link} to="/home">
+          <Button color="primary" component={Link} to="/home">
             Home
           </Button>
-          <Button color="inherit" component={Link} to="/about">
+          <Button color="primary" component={Link} to="/about">
             About
           </Button>
-          <Button color="inherit">Login</Button>
+          <Button color="primary">Login</Button>
         </Toolbar>
       </AppBar>
       <nav>
@@ -96,12 +108,13 @@ export default function NavBar(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor: "#1a1a1a",
             },
           }}
         >

@@ -1,6 +1,5 @@
-import BlurredVideo from "../components/BlurredVideo";
-import Video from "../components/Video";
+import AudioPlayer from "../components/AudioPlayer";
 
 export default function OpeningGame() {
-  return <Video />;
+  return <AudioPlayer src="https://a.animethemes.moe/Bakemonogatari-OP1.ogg" />
 }
